@@ -22,6 +22,7 @@ base_url = 'http://demoqa.com/radio-button'
 driver.get(base_url)
 driver.maximize_window()
 
+# создаем переменную для радио-кнопки, нажимаем её и проверяем активацию
 radio_button = driver.find_element(By.XPATH, "(//label[@class='custom-control-label'])[2]")
 radio_button.click()
 not radio_button.is_selected()
