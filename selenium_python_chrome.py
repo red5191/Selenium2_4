@@ -14,7 +14,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 # создаем и настраиваем экземпляр driver класса webdriver
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach",True)
-# options.add_argument('--headless')
+options.add_argument('--headless')
 driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
 
 # создаем переменную содержащую базовую ссылку и открываем её с помощью созданного ранее driver
@@ -22,8 +22,13 @@ base_url = 'http://demoqa.com/radio-button'
 driver.get(base_url)
 driver.maximize_window()
 
-# создаем переменную для радио-кнопки, нажимаем её и проверяем активацию
+# создаем переменную для радио-кнопки и нажимаем
 radio_button = driver.find_element(By.XPATH, "(//label[@class='custom-control-label'])[2]")
 radio_button.click()
-not radio_button.is_selected()
-print('Radio Button Active')
+print('Произведен клик по кнопке')
+
+# проверяем активацию радио-кнопки
+value_radio_button = driver.find_element(By.XPATH, "//p[@class='mt-3']").text
+print(f'Сообщение на сайте гласит: {value_radio_button}')
+assert value_radio_button == 'You have selected Impressive', 'Radio Button not selected'
+print('Кнопка "Impressive" успешно выбрана')
