@@ -14,7 +14,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 # создаем и настраиваем экземпляр driver класса webdriver
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach",True)
-options.add_argument('--headless')
+# options.add_argument('--headless')
 driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
 
 # создаем переменную содержащую базовую ссылку и открываем её с помощью созданного ранее driver
